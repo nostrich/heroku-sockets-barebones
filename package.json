@@ -1,0 +1,12 @@
+{
+    "name": "TweetBoard",
+    "version": "0.0.1",
+    "description": "Sockets and Virality",
+    "dependencies": {
+        "moniker": "latest",
+        "underscore":"latest",
+        "express":"latest",
+        "ws":"latest"
+    },
+    "author": "Dick Wisdom"
+}

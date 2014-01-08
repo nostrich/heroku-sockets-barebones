@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+  <!-- <script src="/socket.io/socket.io.js"></script> -->
+  <script type="text/javascript">
+    var host = location.origin.replace(/^http/, 'ws');
+    var ws = new WebSocket(host);
+
+    window.onload = function() {
+      var newpost = document.getElementById("newpost");  
+      newpost.onclick = function() {
+        ws.send(JSON.stringify({ type: 'new-post' }));
+      };
+    }
+
+    ws.onmessage = function (event) {
+      var json = JSON.parse(event.data);
+      console.log(json);
+      test.innerHTML = json.message;
+    };
+    
+  </script>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="row">
+
+  <nav class="navbar navbar-default" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Title</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#" id="newpost">New Post</a></li>
+      </ul>
+      
+      <ul class="nav navbar-nav navbar-right">
+        <p class="navbar-text">Hello</p>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </nav>
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-3" id="test">
+      
+    </div>
+
+    <div class="col-md-9">
+
+    </div> 
+
+  </div>
+
+</div>
+
+
+  
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+</body>
+</html>
